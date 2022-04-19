@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/styles/styles.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css" type="text/css" />
+  <script src = "/socket.io/socket.io.js"></script>
+   
+  <title>Document</title>
+</head>
+<body>
+    <div class="container">
+    </div>
+    <h1>Recursos del sistema</h1>
+
+    <p><b>Argumentos de entrada: </b> {{{argv}}}</p>
+    <p><b>Path de ejecución:</b> {{{execPath}}}</p>
+    <p><b>Sistema operativo: </b>{{{versionSO}}}</p>
+    <p><b>Id del proceso: </b>{{{pid}}}</p>
+    <p><b>Versión de Node.js utilizada:</b> {{{nodeVersion}}}</p>
+    <p><b>Ubicación del proyecto: </b>{{{cwd}}}</p>
+    <p><b>Memoria total reservada: </b>{{{rss}}}</p>
+</body>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js" ></script>
+<script src="/static/scripts.js"></script>
+</html>

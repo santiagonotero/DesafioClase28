@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/styles/styles.css" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.2/dist/normalizr.browser.min.js"></script>
+    <script src = "/socket.io/socket.io.js"></script>
+     
+  </head>
+  <body>
+    <div class="container" id="barraMenu">
+      <h1>Te damos la bienvenida {{{name}}}</h1><a href="./logout">Cerrar sesión</a>
+      <ul>
+        <a href="/"><li>Inicio</li></a>
+        <a href="/add"><li>Agregar objeto</li></a>
+      </ul>
+    </div>
+  <p>Listado de productos</p>
+    <div id="listadoProductos"> 
+      <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Foto</th>
+        </tr>
+      </thead>
+        <tbody>
+         {{#each items}}
+          <tr>
+              <td>{{this.nombre}}</td>
+              <td>{{this.precio}}</td>
+              <td><img src={{this.foto}}></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  <div>
+  <p>Área de mensajes </p>
+    <form >
+      <input type="email" id="id" placeholder="Email" />
+      <input type="text" id="nombreUsuario" placeholder="Nombre" />
+      <input type="text" id="apellidoUsuario" placeholder="Apellido" />
+      <input type="number" id="edad" placeholder="Edad" />
+      <input type="text" id="alias" placeholder="Alias" />
+      <input type="text" id="avatar" placeholder="Avatar" />
+      <input type="text" id="mensaje" placeholder="Escriba su mensaje" />
+      <button type="submit" onsubmit="addMessage(this)">Enviar</button>
+    </form>
+    
+    <script id="plantillaChat" type="text/x-handlebars-template">
+    <p id="compresion">Compresión de mensajes: {{{compresion}}} </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Avatar</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Alias</th>
+          <th>Mensaje</th>
+        </tr>
+      </thead>
+      <tbody>
+          {{#each msjs}}
+          <tr>
+              <td>{{this.author.avatar}}</td>
+              <td>{{this.author.nombre}}</td>
+              <td>{{this.author.apellido}}</td>
+              <td>{{this.author.alias}} ({{this.author.id}})</td>
+              <td>{{this.text}}</td>
+          {{/each}}
+          </tr>
+      </tbody>
+    </table>
+    </script>
+    <div id="areaChat" ></div>
+  </div>
+ </body> 
+  <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.2/dist/normalizr.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js" ></script>
+  <script src="/static/scripts.js"></script>
+</html>
